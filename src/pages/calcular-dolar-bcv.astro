@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Cta from "../components/Cta.astro";
+import TramitesEnLinea from "../components/TramitesEnLinea";
+import SectionBlog from "../components/SectionBlog.astro";
+import EncabezadoInterno from "../components/EncabezadoInterno.astro";
+import Section from "../components/Section.astro";
+import LayoutBlog from "../layouts/LayoutBlog.astro";
+import CalculadoraCambio from "../components/dolar/CalculadoraCambio";
+import Paralelo from "../components/dolar/Paralelo";
+
+interface Props {
+    tipo: string,
+}
+const {tipo} = Astro.props
+---
+
+<Layout
+  metatitle="Calculadora Dólar BCV"
+  metadescrip="Calcula rapidamente y muy fácil el dolar en Venezuela, solo ingresa el monto y tendras las tasa de cambios convertidas a dolar y a Bs."
+  slug="calcular-dolar-bcv/"
+  structuredData={{}}
+>
+  <div class="relative overflow-hidden">
+    <!-- Gradients -->
+    <div
+      aria-hidden="true"
+      class="flex absolute start-1/2 transform -translate-x-1/2"
+    >
+      <div
+        class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-100 h-175 rotate-[-60deg] transform -translate-x-40"
+      >
+      </div>
+      <div
+        class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[1440px] h-200 rounded-fulls origin-top-left -rotate-12 -translate-x-60"
+      >
+      </div>
+    </div>
+    <!-- End Gradients -->
+
+     
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-8">
+        <div class="flex justify-center items-center">
+            <img
+              class="rounded-md my-3"
+              src="/img/banner_promo.webp"
+              alt="tarjeta internacional"
+            />
+          </div>
+        <div class="max-w-2xl text-center mx-auto">
+          <!-- Title -->
+          <div class="mt-2 max-w-2xl">
+            <h1
+              class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl"
+            >
+              Calcula el Tipo de Cambio del Dólar
+            </h1>
+          </div>
+          <!-- End Title -->
+
+          <div class="mt-5 max-w-3xl">
+            <p class="text-lg text-gray-600">
+              Calcula el tipo de cambio del dia, actualizado diariamente, con
+              solo ingresar el monto obtendras las tasa oficial BCV.
+            </p>
+          </div>
+        </div>
+        <section class="p-4">
+          <div class="rounded-md grid grid-cols-1">
+            <!-- <div class="py-8 px-4 flex flex-col">
+              <Paralelo client:visible />
+            </div> -->
+
+            <div class="flex flex-col">
+              <CalculadoraCambio tipo="BCV"  client:load />
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+ 
+  <Section>
+  <Cta titulocta="Comunicate Para Publicidad" descripcta="" urlbotoncta="/contacto/" targetcta="" nomboton="Contacto"/>
+</Section>
+</Layout>

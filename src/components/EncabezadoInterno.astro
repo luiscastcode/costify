@@ -1,0 +1,31 @@
+---
+import BotonPrincipal from "./BotonPrincipal.astro";
+
+const {
+  tituloencabezado,
+
+  descriphero,
+  img,
+} = Astro.props;
+---
+
+<section
+  class="grid grid-cols-1 md:grid-cols-2 justify-center items-center mx-auto w-full md:max-w-screen-xl max-[600px]"
+>
+  <div class="py-8 px-4 flex flex-col items-center justify-center">
+    <h1
+      class="mb-4 tracking-tight bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent"
+    >
+      {tituloencabezado}
+    </h1>
+    <p class="mb-6">{descriphero}</p>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <img
+      class="hidden md:flex rounded-md my-3"
+      src={`/img/${img}`}
+      alt="paga en linea"
+    />
+  </div>
+</section>

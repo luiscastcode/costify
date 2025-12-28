@@ -1,0 +1,55 @@
+---
+interface Props {
+  titulocta: string;
+  descripcta: string;
+  urlbotoncta: string;
+  targetcta: string;
+  nomboton: string;
+}
+
+const { titulocta, descripcta, urlbotoncta, nomboton,targetcta } = Astro.props;
+---
+
+<div
+  class="w-full px-2 md:px-4 py-4 md:py-8 border rounded-md my-8 shadow-md bg-gradient-to-r from-blue-600 to-blue-300 border-orange-800"
+>
+  <div
+    class="flex flex-col md:flex-row items-center justify-between mx-auto space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse"
+  >
+    <div class="flex flex-col w-full px-8">
+      <h5 class="my-2 text-3xl text-center font-bold text-slate-200">
+        {titulocta}
+      </h5>
+      <p class="text-slate-200 text-center">
+        {descripcta}
+      </p>
+    </div>
+    <div class="w-full">
+      <a
+        href={urlbotoncta}
+        target={targetcta}
+        class="text-gray-900 justify-center inline-flex items-center w-full md:max-w-md bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-lg px-5 py-2.5 me-2 mb-2 border border-orange-800"
+      >
+        <svg
+          class="w-6 h-6 text-gray-800 mr-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"
+          ></path>
+        </svg>
+
+        {nomboton}
+      </a>
+    </div>
+  </div>
+</div>

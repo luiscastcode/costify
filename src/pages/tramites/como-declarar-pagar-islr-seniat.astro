@@ -1,0 +1,386 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import Hero from "../../components/Hero.astro";
+import Cta from "../../components/Cta.astro";
+import TramitesEnLinea from "../../components/TramitesEnLinea";
+import SectionBlog from "../../components/SectionBlog.astro";
+import EncabezadoInterno from "../../components/EncabezadoInterno.astro";
+ 
+---
+
+<Layout
+  metatitle="Guía Para Declarar y Pagar ISLR | Personas Naturales"
+  metadescrip="Personas naturales declaran hasta el 31 de marzo del año siguiente al ejercicio fiscal, donde declarar y pagar ISLR Seniat en linea, mira este artículo"
+  slug="tramites/como-declarar-pagar-islr-seniat/"
+  structuredData={{}}
+>
+  <EncabezadoInterno
+    tituloencabezado="Cómo Declarar y Pagar ISLR en Línea - Guía Completa"
+    descriphero="¡Hola! Si estás aquí, es porque necesitas ayuda para  declarar y pagar el ISLR  ante el SENIAT. Informate bien para poder cumplir con tus obligaciones fiscales sin pagar gestor y sin errores"
+    img="logoseniat.jpg"
+  />
+  <SectionBlog>
+    <section id="pasos">
+      <h2 class="text-center ">
+        Pasos Para Declarar el ISLR SENIAT Persona Natural Dependiente
+      </h2>
+      <ol class="lista">
+        <li>
+          <span class="bg-slate-300 py-1 px-3 rounded-md my-2">Paso 1.</span>
+          <p>
+            Ubique el Comprobante de retención de impuesto (AR-C) enviado desde
+            Talento Humano de su empleador, empresa o dependencia pública a su
+            correo, si aún no le ha llegado debe solicitarla, este refleja el
+            salario e Impuesto retenidos acumulados requeridos para su
+            declaración .
+          </p>
+        </li>
+        <li>
+          <span class="bg-slate-300 py-1 px-3 rounded-md my-2">Paso 2.</span>
+          <p>
+            Ingrese a través de la siguiente dirección de Internet al <a
+              href="https://declaraciones.seniat.gob.ve/portal/page/portal/PORTAL_SENIAT"
+              target="_blank"
+              class="font-semibold italic text-blue-500 hover:text-blue-800"
+              >Portal del SENIAT</a
+            >
+          </p>
+        </li>
+        <li>
+          <span class="bg-slate-300 py-1 px-3 rounded-md my-2">Paso 3.</span>
+          <p>
+            Seleccione la opción Persona Natural luego ingrese su usuario y
+            clave para ingresar al sistema.
+          </p>
+        </li>
+        <li>
+          <span class="bg-slate-300 py-1 px-3 rounded-md my-2">Paso 4.</span>
+          <p>
+            Seleccione del menú principal la opción Procesos Tributarios /
+            Declaración ISLR / Definitiva. Verifique los datos y continúe
+            confirme que la declaración sea al 31 diciembre.
+          </p>
+        </li>
+        <li>
+          <span class="bg-slate-300 py-1 px-3 rounded-md my-2">Paso 5.</span>
+          <p>Llene el formulario asi: .</p>
+          <ol class="lista">
+            <li>
+              <p>
+                ➡️ ¿Declaración definitiva? <span class="font-bold">SI</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                ➡️ Posee rentas exentas o exoneradas? <span class="font-bold"
+                  >NO</span
+                >
+              </p>
+            </li>
+            <li>
+              En Desgravamen:
+              <p>
+                ➡️ Seleccione <span class="font-bold"> Único</span> si no tiene gastos
+                demostrables
+              </p>
+
+              <p>
+                ➡️ Seleccione <span class="font-bold">Detallado</span> si posee gastos
+                demostrables.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                ➡️ ¿Cuál es su tipo de enriquecimiento? <span class="font-bold"
+                  >Asalariado territorial</span
+                >
+              </p><p>
+                Confirme el periodo a declarar complete las preguntas y
+                seleccione continuar.
+              </p>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <div class="bg-red-300 border rounded-md p-4 border-gray-400">
+        <p>
+          <span class="font-bold">Asalariado Territorial:</span> Persona natural
+          que trabaja en el país bajo relación de dependencia, recibe sueldos y salarios
+          de un patrono.
+        </p>
+        <p>
+          <span class="font-bold"
+            >Asalariado Territorial y No Asalariado Extraterritorial:</span
+          > Persona natural que trabaja en el país bajo relación de dependencia y
+          además recibe ingresos del exterior por su trabajo de forma independiente
+          o por libre ejercicio de su profesión.
+        </p>
+      </div>
+      <div class="flex justify-center items-center">
+        <img
+          class="rounded-md my-3"
+          src="/img/declara-islr/inicio.png"
+          alt="verificar datos"
+        />
+      </div>
+      <h3 class="bg-slate-300 p-3 rounded-md">Si elegiste Gravámen Único</h3>
+
+      <p>Llene el formulario asi:</p>
+      <ol class="lista">
+        <li>
+          ➡️ Sueldos
+          <p>
+            Coloque las remuneraciones acumuladas del ARC o la suma de los
+            ingresos del año por concepto de suledos y salarios, presione
+            guardar y continuar.
+          </p>
+        </li>
+        <li>
+          ➡️ Desgravámenes
+          <p>
+            No puedes registrar gastos solo refleja el valor por desgravámen
+            único, guardar y continuar.
+          </p>
+        </li>
+        <li>
+          ➡️ Rebajas impuestos:
+          <p>
+            Seleccione las cargas familiares que tiene registradas en el SENIAT,
+            guardar y continuar.
+          </p>
+        </li>
+
+        <li>
+          ➡️ Anticipos impuesto
+          <p>Agregue lo retenido acumulado del ARC, guardar y continuar.</p>
+        </li>
+        <li>
+          ➡️ Impuesto en exceso
+          <p>
+            Son los excesos pagados en periodos anteriores, rellene si los hay,
+            guardar y continuar.
+          </p>
+        </li>
+        <li>
+          ➡️ Compensaciones resumen de declaración
+          <p>Refleja el total impuesto a pagar guardar y continuar.</p>
+        </li>
+        <li>
+          ➡️ Resumen
+          <p>
+            El resumen, seleccione el nro. de porciones de pago, agregue el
+            correo electrónico , guardar y continuar.
+          </p>
+        </li>
+        <li>
+          ➡️ Declaración
+          <p>
+            Verifica que todo este correcto y solo seleccione declarar cuando
+            este seguro, si debe modificar alguna sección en específico ubique
+            en el menú declaración, modifique y guarde hasta que complete el
+            ciclo.
+          </p>
+        </li>
+      </ol>
+      <h3 class="bg-slate-300 p-3 rounded-md">
+        Si elegiste Gravámen Detallado
+      </h3>
+
+      <p>
+        Llene el formulario igual que en los pasos de desgravámen único solo que
+        en la parte de Desgravámenes se hace asi:
+      </p>
+      <ol class="lista">
+        <li>
+          ➡️ Desgravámen Detallado
+          <p>
+            Debes detallar los gastos que son demostrables, guardar y continuar.
+          </p>
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2 class="text-center ">
+        Errores Comunes al Declarar el ISLR (y cómo evitarlos)
+      </h2>
+      <ol class="lista">
+        <li>
+          ➡️ Olvidar ingresos: <p>
+            Incluye hasta los pagos ocasionales por servicios.
+          </p>
+        </li>
+        <li>
+          ➡️ Mal cálculo de gastos: <p>
+            Solo son deducibles los gastos vinculados a tu actividad económica.
+          </p>
+        </li>
+        <li>
+          ➡️ Fuera de plazo: <p>
+            La declaración <span class="font-bold">vence el 31 de marzo</span>.
+            Postergarla acarrea multas. El pago puede ser fraccionado pero debes
+            declarar ISLR hasta el 31 de Marzo
+          </p>
+        </li>
+      </ol>
+      <h2 class="text-center ">
+        ¿Declarar por tu cuenta o contratar a un gestor?
+      </h2>
+      <p>
+        Si tu caso es sencillo (ingresos fijos, pocos gastos), esta guía es
+        suficiente. Pero si tienes múltiples fuentes de ingresos, sociedades o
+        activos en el exterior, recomiendo asesoría profesional. Un contador
+        puede ahorrarte hasta un 20% en impuestos mediante estrategias legales.
+      </p>
+    </section>
+    <Cta
+      titulocta="Asesorias a PYMES"
+      descripcta="Si tienes una pequeña empresa o PYME y necesitas asesoría, contamos con expertos tributarios, contadores y abogados que ayudarán a solventar cualquier situación"
+      nomboton="Contactanos"
+      urlbotoncta="/contacto/"
+      targetcta=" "
+    />
+    <section>
+      <p>
+        El <span class="font-bold">Impuesto sobre la Renta (ISLR)</span>
+        es un tributo directo que grava los ingresos obtenidos por personas naturales
+        (individuos) y jurídicas (empresas) en un período fiscal. En Venezuela, este
+        impuesto está regulado por la <span class="font-bold"
+          >Ley de Impuesto sobre la Renta (LISLR)</span
+        >
+        y sus reformas recientes. Su objetivo principal es redistribuir la riqueza
+        y financiar servicios públicos.
+      </p>
+      <h3 class="bg-slate-300 p-3 rounded-md">
+        1. Sujetos Obligados a Declarar y Pagar el ISLR
+      </h3>
+      <h4>a) Personas Naturales:</h4>
+      <ol class="lista">
+        <li>
+          ➡️ Residentes en Venezuela: <p>
+            Deben declarar todos sus ingresos obtenidos dentro y fuera del país.
+          </p>
+        </li>
+        <li>
+          ➡️ No residentes: <p>
+            Gravan únicamente los ingresos de fuente venezolana (ej: alquiler de
+            propiedades en el país).
+          </p>
+        </li>
+      </ol>
+      <h4>b) Personas Jurídicas:</h4>
+      <ol class="lista">
+        <li>
+          <p>
+            Empresas, asociaciones civiles, fundaciones y otras entidades
+            legalmente constituidas, independientemente de su nacionalidad, que
+            operen en Venezuela.
+          </p>
+        </li>
+      </ol>
+
+      <h4>c) Régimen de Exenciones Solo Declarar:</h4>
+      <ol class="lista">
+        <li>
+          <p>
+            ➡️ Ingresos por debajo de un monto mínimo no imponible (ajustado
+            periódicamente por el SENIAT).
+          </p>
+        </li>
+        <li>
+          <p>
+            ➡️ Sectores específicos como agricultura, educación o cultura pueden
+            tener beneficios fiscales.
+          </p>
+        </li>
+      </ol>
+      <h3 class="bg-slate-300 p-3 rounded-md">2. Declaración y Pago</h3>
+      <h4>Plazos Declaración:</h4>
+      <ol class="lista">
+        <li>
+          ➡️ Personas Naturales: <p>
+            Entre Enero y 31 de Marzo del año siguiente al ejercicio fiscal.
+          </p>
+        </li>
+      </ol>
+      <h4>Plazos Pagos:</h4>
+      <ol class="lista">
+        <li>
+          ➡️ Personas Naturales: <p>
+            Pueden fraccionar el pago hasta en tres cuotas: <a
+              href="https://www.instagram.com/p/DFavoRRuabW/?hl=es"
+              target="_blank"
+              class="font-semibold italic text-blue-500 hover:text-blue-800"
+              >31 de marzo, 21 de abril, 12 de mayo</a
+            > .
+          </p>
+        </li>
+      </ol>
+      <h4>Formularios:</h4>
+      <ol class="lista">
+        <li>
+          ➡️ AR-I y AR-C: <p>Para declaración anual de personas naturales.</p>
+        </li>
+      </ol>
+
+      <Cta
+        titulocta="Formularios Eléctronicos SENIAT"
+        descripcta="Accede a todos los formularios que ofrece el SENIAT"
+        nomboton="Descargar Fomularios"
+        urlbotoncta="https://declaraciones.seniat.gob.ve/portal/page/portal/MANEJADOR_CONTENIDO_SENIAT/05MENU_HORIZONTAL/5.1ASISTENCIA_CONTRIBUYENTE/5.1.4INFORMACION_INTERE/5.1.4.1FORMULARIOS/5.1.4.1.html"
+        targetcta="_blank"
+      />
+      <h3 class="bg-slate-300 p-3 rounded-md">
+        3. Sanciones Por Incumplimiento:
+      </h3>
+
+      <ol class="lista">
+        <li>
+          ➡️ Multas: <p>
+            Por presentación extemporánea, omisión de ingresos o errores en la
+            declaración (hasta el 50% del impuesto evadido).
+          </p>
+        </li>
+        <li>
+          ➡️ Intereses Moratorios: <p>Calculados sobre el monto adeudado.</p>
+        </li>
+        <li>
+          ➡️ Responsabilidad Penal: <p>En casos graves de evasión fiscal.</p>
+        </li>
+      </ol>
+      <h3 class="bg-slate-300 p-3 rounded-md">
+        4. Reformas Recientes (2023-2024):
+      </h3>
+
+      <ol class="lista">
+        <li>
+          ➡️ Aumento del Mínimo No Imponible: <p>
+            Ajustado ante la inflación para proteger a contribuyentes de bajos
+            ingresos.
+          </p>
+        </li>
+        <li>
+          ➡️ Digitalización: <p>
+            Obligatoriedad de presentar declaraciones en plataformas del SENIAT.
+          </p>
+        </li>
+        <li>
+          ➡️ Fiscalización de Cryptomonedas: <p>
+            Rentas en criptoactivos deben declararse como renta de capital.
+          </p>
+        </li>
+      </ol>
+    </section>
+    
+      <TramitesEnLinea client:visible />
+   
+    <Cta
+      titulocta="¿Necesitas ayuda para pagar una factura o realizar un trámite?"
+      descripcta="¡Estamos aquí para ayudarte! Contáctanos y te pondremos en contacto con un experto asesor. ¡Con pagarenlinea.site, todo es más fácil y seguro!"
+      urlbotoncta="/contacto/"
+      nomboton="Consulta a un Asesor"
+      targetcta=""
+    />
+  </SectionBlog>
+</Layout>

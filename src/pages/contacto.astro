@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+ 
+---
+
+<Layout
+  metatitle="Contacto y asesorias para PYMES | Pagar En Linea"
+  metadescrip="Contactanos, haznos todas la pregunts necesaria y veremos como podremos ayudarte, tenemos un equipo experto"
+  slug="contacto/"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://pagarenlinea.site/contacto",
+    url: "https://pagarenlinea.site/contacto",
+    name: "Contacto y asesorias para PYMES | Pagar En Linea",
+    description:
+      "Contactanos, haznos todas la pregunts necesaria y veremos como podremos ayudarte, tenemos un equipo experto.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://pagarenlinea.site/",
+      name: "Pagar En Linea",
+      description:
+        "Te ayudamos a pagar la factura CANTV en linea o cualquier trámite desde tu computadora o teléfono",
+    },
+    inLanguage: "es_ES",
+  }}
+>
+  <Section>
+    <section id="contacto">
+      <h2 class="text-center text-4xl">Contacto</h2>
+      <div
+        class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md border rounded-md bg-slate-50"
+      >
+        <form
+          action="https://formspree.io/f/xpzvjpgl"
+          method="POST"
+          class="space-y-8"
+        >
+          <div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-300"
+              >Tu Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+              placeholder="name@mail.com"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="subject"
+              class="block mb-2 text-sm font-medium text-gray-300">Asunto</label
+            >
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+              placeholder="Dejanos saber que podemos hacer por ti"
+              required
+            />
+          </div>
+          <div class="sm:col-span-2">
+            <label
+              for="message"
+              class="block mb-2 text-sm font-medium text-gray-400"
+              >Tu Mensaje</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Dejanos tu comentario ó inquietud..."></textarea>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="md:w-full py-3 px-5 text-sm font-medium text-center text-white bg-gray-700 sm:w-fit hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300"
+              >Enviar Mensajae</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </Section>
+</Layout>

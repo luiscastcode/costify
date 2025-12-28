@@ -1,0 +1,192 @@
+---
+import Section from "./Section.astro";
+import MasBuscados from "./MasBuscados";
+import ServiciosDestacados from "./ServiciosDestacados";
+import Lista from "./Lista.astro";
+import ServiciosEnLinea from "./ServiciosEnLinea";
+import Cta from "./Cta.astro";
+import MetodosPagos from "./TarjetaInter";
+import TramitesDestacados from "./TramitesDestacados";
+import TarjetasDestacadas from "./TarjetasDestacadas";
+---
+
+<Section>
+  <section id="saber-mas" class="my-10 grid grid-cols-1">
+    <h2 class="tracking-tight text-center">¿Para que Sirve Costify?</h2>
+    <!-- Icon Blocks -->
+    <div class="px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div class="w-full mx-auto">
+        <!-- Grid -->
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-12">
+          <div class="space-y-6 lg:space-y-10">
+            <Lista
+              titulolista="Sirve para calcular el pvp con margen de ganancia"
+              listadescrip="Utilizando la formula muy popular en Venzuela: Margen de Ganancia."
+            />
+            <Lista
+              titulolista="Ideal para bodegas y pequeños comerciantes"
+              listadescrip="Si necesitas cumplir con un margen de ganancia específico para competir en el mercado."
+            />
+          </div>
+          <div class="flex flex-col">
+            <Lista
+              titulolista="Para calcular el precio de un producto en tu bodega."
+              listadescrip="Este método es más utilizado en contabilidad y finanzas para calcular el 'margen de ganancia'. La ganancia se calcula como un porcentaje del precio de venta final."
+            />
+            <Lista
+              titulolista="Todos los dias aumenta el BCV"
+              listadescrip="La calculadora de ayudará a definir rapidamente tus precios diarios dandote una idea de lo que debería costar."
+            />
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Grid -->
+      </div>
+    </div>
+    <!-- End Icon Blocks -->
+  </section>
+
+  <Cta
+    titulocta="¿Necesitas ayuda para pagar una factura o realizar un trámite?"
+    descripcta="¡Estamos aquí para ayudarte! Contáctanos y te pondremos en contacto con un experto tributario."
+    urlbotoncta="/contacto/"
+    nomboton="Consulta a un Asesor"
+    targetcta=""
+  />
+  <section class="my-5 grid grid-cols-1">
+    <h2 class="tracking-tight text-center">¿Cómo Funciona Costify?</h2>
+
+    <p>
+      La fórmula general para calcular el precio de venta con un margen de
+      ganancia es una herramienta clave en la fijación de precios que asegura
+      que una parte de cada venta sea una ganancia neta. A diferencia del
+      cálculo simple donde se le agrega un porcentaje al costo, esta fórmula te
+      ayuda a determinar el precio de venta final para que tu ganancia
+      represente un porcentaje específico de ese mismo precio final.
+    </p>
+    <h3>Pero Para Que Sirve</h3>
+    <p>
+      Sirve para determinar el precio de venta de un producto o servicio de
+      manera que el margen de ganancia deseado sea un porcentaje del precio de
+      venta final, no del costo. Este enfoque es crucial para:
+    </p>
+    <div class="grid md:grid-cols-2 gap-6 lg:gap-12 p-8">
+      <div class="space-y-6 lg:space-y-10">
+        <Lista
+          titulolista="Análisis de Rentabilidad:"
+          listadescrip="Permite saber con precisión qué porcentaje de cada venta es ganancia real, lo que facilita el análisis de la salud financiera del negocio. Es la métrica más usada en contabilidad."
+        />
+        <Lista
+          titulolista="Y Cómo Funciona?"
+          listadescrip="Precio de venta = Costo del producto / 1 - Margen de ganancia deseado (en decimal)"
+        />
+      </div>
+      <div class="flex flex-col">
+        <Lista
+          titulolista="Comparación y Fijación de Precios:"
+          listadescrip="Ayuda a comparar la rentabilidad entre diferentes productos o servicios y a establecer precios competitivos en el mercado, basándose en la rentabilidad que necesitas."
+        />
+        <Lista
+          titulolista="Lógica detrás de la fórmula:"
+          listadescrip="La fórmula parte de la idea de que el precio de venta es el 100% de tu ingreso. Este 100% se divide en dos partes: el costo y la ganancia."
+        />
+      </div>
+    </div>
+
+    <p>
+      Si ya sabes tu costo (ej. $100) y sabes que ese costo representa el 70%
+      del precio de venta final, entonces divides el costo ($100) por el 70%
+      (0.70) para encontrar el 100% (el precio de venta final).
+    </p>
+  </section>
+  <MasBuscados />
+
+  <ServiciosDestacados />
+
+  <TramitesDestacados client:visible />
+
+  <section>
+    <Cta
+      titulocta="¿Necesitas ayuda para pagar la PLanilla Única Bancaria PUB?"
+      descripcta="Sigue estos pasos y hazlo correctamente."
+      urlbotoncta="/tramites/pagar-en-linea-pub-saren/"
+      nomboton="Guía Completa"
+      targetcta=""
+    />
+  </section>
+  <section
+    class="grid grid-cols-1 md:grid-cols-2 justify-center items-center mx-auto p-6"
+  >
+    <div class="flex justify-center items-center">
+      <img
+        class="rounded-md my-3"
+        src="/img/supermarket.jpg"
+        alt="super mercado"
+      />
+    </div>
+    <div class="py-8 px-4 md:px-12 flex flex-col justify-between">
+      <h2 class="text-center">
+        ¿Cómo Esta Web Te Ayudará a Gestionar Tu Abasto?
+      </h2>
+
+      <p>
+        Sin importar su nivel de experiencia tecnológica, te explicamos cómo te
+        ayudaremos:
+      </p>
+      <Lista
+        titulolista="Pasos Detallados y Claros"
+        listadescrip="Incluimos instrucciones paso a paso para realizar los trámites más comunes, desde registrarte en las plataformas de los entes gubernamentales hasta generar y pagar tus planillas de forma digital."
+      />
+      <Lista
+        titulolista="Enlaces Directos a Portales Oficiales"
+        listadescrip="Nuestra web proporciona enlaces a los portales más importantes, como el SENIAT, las alcaldías locales y otros entes públicos y privados. Esto garantiza que realices tus gestiones de manera segura y confiable, utilizando canales oficiales."
+      />
+      <Lista
+        titulolista="Evitar Gestores Costosos"
+        listadescrip="Contratar un gestor puede parecer una solución rápida, pero muchas veces representa un gasto innecesario. Nuestra guía te capacita para que tú mismo puedas realizar estos trámites, empoderándote y ahorrándote dinero."
+      />
+    </div>
+  </section>
+
+  <section
+    class="my-10 grid grid-cols-1 md:grid-cols-2 justify-center items-center mx-auto"
+  >
+    <div class="py-8 px-4 md:px-12 flex flex-col justify-between">
+      <h2 class="text-center">
+        Conoce Los Métodos de Pago en Línea Más Usados en Venezuela
+      </h2>
+      <p>
+        Además, publicamos alertas sobre estafas comunes, como phishing en
+        páginas clonadas, y recomendaciones para proteger tus datos.
+      </p>
+      <Lista
+        titulolista="Tarjetas Para Pagos Internacionales"
+        listadescrip="Ventajas y desventajas de usar tarnetas internacionales de instituciones como Banesco o Banco de Venezuela."
+      />
+      <Lista
+        titulolista="Monederos Electrónicos:"
+        listadescrip="Plataforma Patria, Binance Pay, Reserve."
+      />
+      <Lista
+        titulolista="Plataformas Internacionales:"
+        listadescrip="PayPal, Zelle, Binance y cómo vincularlas a cuentas locales."
+      />
+      <Lista
+        titulolista="Criptomonedas:"
+        listadescrip="Uso de Bitcoin, USDT o Dash para pagos rápidos y sin intermediarios."
+      />
+    </div>
+    <div class="flex justify-center items-center">
+      <img class="rounded-md my-3" src="/img/tc.png" alt="registro corpoelec" />
+    </div>
+  </section>
+  <TarjetasDestacadas />
+
+  <Cta
+    titulocta="Asesoría Personalizada con Expertos"
+    descripcta="Si tienes una pequeña empresa o PYME y necesitas asesoría, contamos con expertos turbutarios, contadores y abogados que ayudarán a solventar cualquier situación"
+    urlbotoncta="/contacto/"
+    nomboton="Contacta un Asesor"
+    targetcta=""
+  />
+</Section>

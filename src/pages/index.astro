@@ -1,11 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Hero from "../components/Hero.astro";
+import Inicio from "../components/Inicio.astro";
 
+import Layout from "../layouts/Layout.astro";
+const {structuredData} = Astro.props
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  metatitle="Costify La Calculadora de Precios On Line Para Bodegas En Venezuela"
+  metadescrip="Caculadora para bodegas en Venezuela que ayuda a calcular rapidamente los precios ante el aumento diario del dólar"
+  slug=""
+  structuredData={structuredData}
+>
+  <Hero
+    tituloencabezado="Costify Calcula Tú Precio Venta"
+    descriphero="Descubre cómo Costify calcula rapidamente los precios diarios de tu bodega. Además, aprende a utilizar los mejores métodos de pago para realizar transacciones de manera fácil, rápida y segura."
+    nombtn="Saber Más Sobre Costify"
+    urlbtn="/#saber-mas"
+    img=" "
+    
+  />
+  <Inicio />
 </Layout>

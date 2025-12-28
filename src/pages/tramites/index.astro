@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import EncabezadoInterno from "../../components/EncabezadoInterno.astro";
+import Cta from "../../components/Cta.astro";
+import BotonPrincipal from "../../components/BotonPrincipal.astro";
+import TramitesEnLinea from "../../components/TramitesEnLinea";
+ 
+
+---
+
+<Layout
+  metatitle="Pagar Trámites En Linea en Venezuela en el 2025"
+  metadescrip="Pagar trámites en linea: impuestos, pasaporte entre otros trámites públicos asi como támbien privados en Venezuela, paga en dolares o en bs"
+  slug="tramites/"
+  structuredData={{}}
+>
+  <EncabezadoInterno
+    tituloencabezado="Guias de Trámites en Linea en Venezuela"
+    descriphero=""     
+    img="licencia.webp"
+    
+  />
+  <Section>
+     
+    <section id="pasos" class="my-10 p-4 rounded-md">
+      <h2 class="text-center">
+        Listado de Guias Para Trámites Públicos En Linea y Trámites Privados
+      </h2>
+      <p>
+        Realizar trámites como el pago de multas, tasas municipales, registros de
+        vehículos o bienes inmuebles ya no tiene por qué ser un proceso complicado
+        ni consumir tanto tiempo. Hoy en día, los avances tecnológicos y la
+        digitalización de las plataformas gubernamentales y privadas en Venezuela
+        permiten realizar todos estos procesos en línea, de forma rápida,
+        eficiente y sin necesidad de gestores.
+      </p>
+      <TramitesEnLinea />
+    </section>
+
+    <Cta
+      titulocta="¿Necesitas un Asesor Experto?"
+      descripcta="Si tienes más preguntas o necesitas asesoría personalizada, no dudes en contactarnos"
+      urlbotoncta="/contacto/"
+      nomboton="Consulta Asesor Financiero"
+      targetcta=""
+    />
+  </Section>
+</Layout>

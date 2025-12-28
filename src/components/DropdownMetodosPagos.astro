@@ -1,0 +1,68 @@
+---
+ 
+ const dataProveed = [
+  {
+    id: 1,
+    nombre: "Tarjetas Internacionales",
+    url: "metodo-de-pago/tarjetas-internacionales",
+  },
+  {
+    id: 2,
+    nombre: "Bancos Que Permiten Cuentas en Dólares",
+    url: "bancos-con-cuentas-en-dolares",
+  },
+  {
+    id: 3,
+    nombre: "Los Metodos de Pagos Más Usados en Venezuela",
+    url: "metodo-de-pago/cuales-son-los-metodos-de-pagos-mas-usados",
+  },
+  
+  
+];
+---
+
+<button
+  id="dropdownHoverButtonP"
+  data-dropdown-toggle="dropdownHoverP"
+  data-dropdown-trigger="hover"
+  class="text-gray-500 hover:font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+  type="button"
+  ><a href="/metodo-de-pago/">Métodos de Pagos en Linea</a><svg
+    class="arrow w-2.5 h-2.5 ms-3"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 10 6"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="m1 1 4 4 4-4"></path>
+  </svg>
+</button>
+
+<!-- Dropdown menu -->
+<div
+  id="dropdownHoverP"
+  class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-72  bg-gray-700"
+>
+  <ul
+    class="py-2 text-sm text-gray-700 bg-[#e2e8f0]"
+    aria-labelledby="dropdownHoverButtonP"
+  >
+    {
+      dataProveed.map((item) => (
+        <li>
+          <a
+            href={`/${item.url}/`}
+            class="block px-4 py-2 hover:font-bold "
+          >
+            {item.nombre}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

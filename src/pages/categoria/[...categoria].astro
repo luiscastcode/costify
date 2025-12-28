@@ -1,0 +1,68 @@
+---
+import Cta from "../../components/Cta.astro";
+import EncabezadoInterno from "../../components/EncabezadoInterno.astro";
+import Section from "../../components/Section.astro";
+import CardBlog from "../../components/ui/cards/CardBlog.astro";
+import Layout from "../../layouts/Layout.astro";
+import { slugify } from "../../utils/configs";
+import { sortPostsByDate } from "../../utils/fecha-fomato";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { categoria: slugify("Noticias") },
+      props: { nombre: "Noticias" },
+    },
+  ];
+}
+
+const { categoria } = Astro.params;
+const { nombre } = Astro.props;
+const allPosts = await Astro.glob("../noticias/*.md");
+const catPosts = allPosts.filter(
+  (post) => slugify(post.frontmatter.categoria) === categoria
+);
+catPosts.sort(sortPostsByDate);
+---
+
+<Layout
+  metatitle={`Mira lo Nuevo En: ${nombre}`}
+  metadescrip={`Publicaciones interesantes sobre: ${nombre}, explora todas las mejores publicaciones que tenemos para ti en esta categoría`}
+  slug=`categoria/${slugify(nombre)}/`
+  structuredData={{}}
+>
+
+   
+  <Section>
+    <div class="mx-auto mb-10 max-w-6xl lg:mb-14">
+        <h1
+            class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+          >
+          Publicaciones sobre: {nombre}
+          </h1>
+          <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
+            El lugar donde las noticias no solo se cuentan… se viven. Donde cada
+            artículo es una ventana a ideas revolucionarias, consejos prácticos y
+            relatos que despiertan curiosidad. En PagaEn Línea, no publicamos
+            contenido cualquiera: creamos experiencias. ¿El resultado? Tú, leyendo
+            con una mano en el mouse y la otra tomando notas.
+          </p>
+    </div>
+    <div class="grid grid-flow-row md:grid-cols-3 gap-1">
+      {
+        catPosts.map((post: any) => (
+          <div class="flex mb-4">
+            <CardBlog post={post} />
+          </div>
+        ))
+      }
+    </div>
+    <Cta
+      titulocta="Consulta tu saldo Hidrocapital"
+      descripcta="Debes tener tu NIC a la mano"
+      nomboton="Consultar Factura"
+      urlbotoncta="https://pagoenlinea.hidrocapital.gob.ve/?x=223&y=193"
+      targetcta="_blank"
+    />
+  </Section>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import LinkPaginacion from "./LinkPaginacion.astro";
+
+
+
+
+
+const {prevUrl, nextUrl} = Astro.props;
+---
+<nav aria-label="Blog Pages">
+{
+  prevUrl && (
+    <LinkPaginacion
+    text="Anterior"
+    href={prevUrl}
+    rel="canonical"
+    target=''
+     
+    />
+  )
+}
+{
+  nextUrl && (
+    <LinkPaginacion
+    text="Próximo"
+    href={nextUrl}
+    rel="canonical"
+    target=''
+     
+    />
+  )
+}
+</nav>

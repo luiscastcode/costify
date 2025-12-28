@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Hero from "../components/Hero.astro";
+import Cta from "../components/Cta.astro";
+---
+
+<Layout
+  metatitle="No Encontrado | Error 404"
+  metadescrip="Lo que buscas ya no esta aqui"
+  slug="acerca-de"
+>
+  <Hero
+    tituloencabezado="Página No Encontrada"
+    nombtn="Ir Al Inicio"
+    urlbtn="/"
+    targetbtn=" "
+  />
+  <Section>
+    <Cta
+      titulocta="¿Necesitas ayuda para pagar una factura o realizar un trámite?"
+      descripcta="¡Estamos aquí para ayudarte! Contáctanos y te pondremos en contacto con un experto asesor."
+      urlbotoncta="/contacto"
+      nomboton="Consulta a un Asesor"
+      targetcta=""
+    />
+  </Section>
+</Layout>

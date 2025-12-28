@@ -1,0 +1,51 @@
+---
+import Paginacion from "../../components/contenido/Paginacion.astro";
+import Cta from "../../components/Cta.astro";
+import CardBlog from "../../components/ui/cards/CardBlog.astro";
+import Layout from "../../layouts/Layout.astro";
+import { sortPostsByDate } from "../../utils/fecha-fomato";
+import Section from "../../components/Section.astro";
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await Astro.glob("./*.md");
+  allPosts.sort(sortPostsByDate);
+  return paginate(allPosts, {
+    pageSize: 9,
+  });
+}
+
+const { page } = Astro.props;
+---
+
+<Layout
+  metatitle="Noticias que Informan"
+  metadescrip="Artículos frescos, análisis profundos y tendencias que marcan la diferencia."
+  slug="noticias/"
+  structuredData={{}}
+>
+  <Section>
+    <section
+      class="px-4 py-10 sm:px-6 md:px-8 lg:py-14 bg-gradient-to-r from-cyan-300 to-blue-300 rounded-md my-8"
+    >
+      <h1 class="text-2xl md:text-4xl md:leading-tight">Noticias Al Día</h1>
+    </section>
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      {
+        page.data.map((post: any) => (
+          <div class="flex mb-1">
+            <CardBlog post={post} />
+          </div>
+        ))
+      }
+    </div>
+
+    <Paginacion prevUrl={page.url.prev} nextUrl={page.url.next} />
+    <Cta
+      titulocta="¿Necesitas ayuda para pagar una factura o realizar un trámite?"
+      descripcta="Escribenos y te pondremos en contacto con un profesional."
+      urlbotoncta="/contacto/"
+      nomboton="Contactanos"
+      targetcta=""
+    />
+  </Section>
+</Layout>

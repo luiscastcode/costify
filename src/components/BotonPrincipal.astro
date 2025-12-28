@@ -1,0 +1,11 @@
+---
+const { nombtn, urlbtn, targetbtn } = Astro.props;
+---
+
+<a
+  href={urlbtn}
+  target={targetbtn}
+  class="text-gray-900 justify-center inline-flex items-center w-full md:max-w-md bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-lg px-5 py-2.5 me-2 mb-2 border border-orange-800"
+>
+  {nombtn}
+</a>

@@ -1,0 +1,32 @@
+---
+import { slugify } from "../../utils/configs";
+import { formatDate } from "../../utils/fecha-fomato"; 
+
+const { publicacionesRelacionadas } = Astro.props;
+---
+
+{
+  publicacionesRelacionadas.map((post: any) => (
+     
+
+<a
+  class="group block rounded-xl outline-none ring-zinc-500 transition duration-300 focus-visible:ring"
+  href={`/${post.frontmatter.slug}`}
+  data-astro-prefetch
+>
+  <div>
+    {post.frontmatter.image.src ? <img src={post.frontmatter.image.src} alt={post.frontmatter.image.alt} class="aspect-video rounded-xl" /> : null}
+    <!-- The title of the blog post -->
+    <h3
+      class="mt-2 text-balance text-lg font-medium text-neutral-800 group-hover:text-orange-400"
+    >
+    {post.frontmatter.titulopost}
+    </h3>
+    <!-- The formatted publication date of the blog post -->
+    <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
+      {formatDate(post.frontmatter.pubDate)}
+    </p>
+  </div>
+  </a>
+))
+}

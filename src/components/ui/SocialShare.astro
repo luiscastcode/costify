@@ -1,0 +1,76 @@
+---
+import {
+  AiOutlineShareAlt,
+  AiOutlineX,
+  AiOutlineLinkedin,
+  AiOutlineFacebook,
+} from "react-icons/ai";
+// Destructure the properties from Astro.props
+const { pageTitle } = Astro.props;
+
+// Define TypeScript interface for the properties
+interface Props {
+  pageTitle: string;
+  title?: string;
+}
+
+type SocialPlatform = {
+  name: string;
+  url: string;
+  svg: string;
+};
+ 
+const encoded_url = encodeURIComponent(Astro.url.href);
+ 
+const socialPlatforms: SocialPlatform[] = [
+  {
+    name: "Facebook",
+    url: `https://www.facebook.com/sharer/sharer.php?u=${encoded_url}`,
+    svg: '',
+  },
+  {
+    name: "X",
+    url: `https://twitter.com/intent/tweet?url=${encoded_url}&text=${pageTitle}`,
+    svg: '',
+  },
+  {
+    name: "LinkedIn",
+    url: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded_url}&title=${pageTitle}`,
+    svg:'',
+  },
+];
+---
+
+
+
+<button
+  id="dropdownCompartirButton"
+  data-dropdown-toggle="dropdownHoverCompartir"
+  data-dropdown-trigger="hover"
+  class="inline-flex items-center gap-x-2 rounded-lg px-4 py-3 text-sm font-medium text-neutral-600 outline-none ring-zinc-500 transition duration-300 hover:bg-neutral-100 hover:text-neutral-700 focus-visible:ring"
+  type="button"
+  >Compartir <AiOutlineShareAlt />
+</button>
+
+<!-- Dropdown menu -->
+<div
+  id="dropdownHoverCompartir"
+  class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-72  bg-gray-300"
+>
+<div class="py-2 first:pt-0 last:pb-0">
+    {
+      socialPlatforms.map((platform) => (
+        <a
+          class="flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-bold text-neutral-700 hover:bg-neutral-200 focus:bg-neutral-100  focus:outline-none "
+          href={platform.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Comparte en ${platform.name}`}
+        >
+      
+          Comparte en {platform.name}
+        </a>
+      ))
+    }
+  </div>
+</div>

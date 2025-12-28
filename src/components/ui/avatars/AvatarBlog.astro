@@ -1,0 +1,22 @@
+---
+// Import necessary components
+  
+
+  
+const { src,alt } = Astro.props;
+
+interface Props {
+  src: string;
+  alt: string;
+}
+---
+
+<div class="flex-shrink-0">
+  <img
+    class="size-[46px] rounded-full border-2 border-neutral-50"
+    src={src}
+    alt={alt}
+    draggable={"false"}
+     
+  />
+</div>

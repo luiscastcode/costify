@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import EncabezadoInterno from "../../components/EncabezadoInterno.astro";
+import Cta from "../../components/Cta.astro";
+import BotonPrincipal from "../../components/BotonPrincipal.astro";
+import TarjetaInter from "../../components/TarjetaInter";
+ 
+---
+
+<Layout
+  metatitle="Plataformas de Pagos Internacionales en Venezuela 2025"
+  metadescrip="Facebank, Zelle, Zinli, Wally, Bancamiga son las alternativas para pagos internacionales dentro de Venezuela, paga servicios de streaming Netflix, Disney, Amazon etc."
+  slug="metodo-de-pago/"
+  structuredData={{}}
+>
+  <EncabezadoInterno
+    tituloencabezado="Plataformas de Pagos Internacionales Más Usados en Venezuela"
+    nombtn="Cómo Obtener Una Tarjeta Internacional"
+    urlbtn="#pasos"
+    targetbtn=""
+    img="tc.png"
+    targetImg=" "
+    urlImg=" "
+  />
+  <Section>
+    <section id="pasos" class="my-10 bg-slate-200 p-4 rounded-md">
+      <h2 class="text-center">Tarjetas Internacionales Para Pagos en Línea</h2>
+
+      <TarjetaInter />
+     
+    </section>
+    <Cta
+    titulocta="¿Cómo Obtener Una Tarjeta Internacional Para Pagos En Linea?"
+    descripcta="Alternativas para pagar Netflix, Disney y cualquier servicio de streaming internacional"
+    urlbotoncta="/metodo-de-pago/tarjetas-internacionales/"
+    nomboton="Guia de Tarjetas Internacionales"
+    targetcta=""
+  />
+   
+    <Cta
+      titulocta="Métodos de Pagos Mas Usados en Venezuela Más Usados"
+      descripcta="Pago Móvil, banca en linea, criptomonedas"
+      urlbotoncta="/metodo-de-pago/cuales-son-los-metodos-de-pagos-mas-usados/"
+      nomboton="Descubre Todos Los Métodos de Pagos"
+      targetcta=""
+    />
+  </Section>
+</Layout>
