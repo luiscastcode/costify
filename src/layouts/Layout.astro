@@ -1,30 +1,36 @@
 ---
-import {SEO} from '../AppConfig'
+import { SEO } from "../AppConfig";
 import NavHeader from "../components/NavHeader.astro";
 import Footer from "../components/Footer.astro";
 interface Props {
   metatitle: string;
   metadescrip: string;
   slug: string;
-  structuredData:object;
+  structuredData: object;
 }
 const defaultProps = {
-  
-  structuredData: SEO.structuredData
+  structuredData: SEO.structuredData,
 };
 
-const { metatitle, metadescrip, slug, structuredData = defaultProps.structuredData } = Astro.props;
+const {
+  metatitle,
+  metadescrip,
+  slug,
+  structuredData = defaultProps.structuredData,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es" class="scroll-smooth">
   <head>
-    {structuredData && (
-      <script is:inline
-        type="application/ld+json"
-        set:html={JSON.stringify(structuredData)}
-      />
-    )
+    {
+      structuredData && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
     }
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -41,28 +47,31 @@ const { metatitle, metadescrip, slug, structuredData = defaultProps.structuredDa
     />
     <link href="/assets/app.css" rel="stylesheet" />
     <meta name="description" content={metadescrip} />
-    <link rel="canonical" href={`https://pagarenlinea.site/${slug}`} />
+    <link rel="canonical" href={`https://costifyprecios.vercel.app/${slug}`} />
     <title>{metatitle}</title>
     <!-- Twitter -->
     <meta property="twitter:title" content={metatitle} />
     <meta property="twitter:description" content={metadescrip} />
     <meta
       property="twitter:image"
-      content="https://pagarenlinea.site/assets/img/social.webp"
+      content="https://costifyprecios.vercel.app/assets/img/social.webp"
     />
     <meta
       property="twitter:url"
-      content={`https://pagarenlinea.site/${slug}`}
+      content={`https://costifyprecios.vercel.app/${slug}`}
     />
     <meta property="twitter:card" content="summary_large_image" />
 
     <!-- Facebook -->
     <meta property="og:title" content={metatitle} />
     <meta property="og:description" content={metadescrip} />
-    <meta property="og:url" content={`https://pagarenlinea.site/${slug}`} />
+    <meta
+      property="og:url"
+      content={`https://costifyprecios.vercel.app/${slug}`}
+    />
     <meta
       property="og:image"
-      content="https://pagarenlinea.site/assets/img/social.webp"
+      content="https://costifyprecios.vercel.app/assets/img/social.webp"
     />
     <meta property="og:type" content="website" />
     <meta content="1200" property="og:image:width" />
@@ -85,21 +94,26 @@ const { metatitle, metadescrip, slug, structuredData = defaultProps.structuredDa
       gtag("config", "G-JQVRF5Q6CR");
     </script>
     <style>
-        /* Custom styles */
-        
-        .gradient-bg {
-            background-image: linear-gradient(to top, #e3eeff 0%, #e3eeff 99%, #e3eeff 100%);
+      /* Custom styles */
+
+      .gradient-bg {
+        background-image: linear-gradient(
+          to top,
+          #e3eeff 0%,
+          #e3eeff 99%,
+          #e3eeff 100%
+        );
+      }
+      /* Spinner animation */
+      .loader {
+        border-top-color: #3498db;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
         }
-        /* Spinner animation */
-        .loader {
-            border-top-color: #3498db;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+      }
     </style>
   </head>
   <body class="gradient-bg">
@@ -111,6 +125,5 @@ const { metatitle, metadescrip, slug, structuredData = defaultProps.structuredDa
       is:inline
       src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
     ></script>
-    
   </body>
 </html>

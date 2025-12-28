@@ -11,6 +11,6 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pagarenlinea.site',
+  site: 'https://costifyprecios.vercel.app',
   integrations: [tailwind(), sitemap(), react(), mdx()]
 });
