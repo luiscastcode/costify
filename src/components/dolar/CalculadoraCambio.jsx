@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from "react";
 
-const CalculadoraCambio = ({tipo}) => {
+const CalculadoraCambio = ({ tipo }) => {
   // Estados para los montos y tipos de cambio
   const [monto, setMonto] = useState(1);
   const [moneda, setMoneda] = useState("USD");
-  const [tasaBCV, setTasaBCV] = useState(0); // Puedes cambiar por el valor actual
-  const [tasaParalelo, setTasaParalelo] = useState(0); // Valor actual estimado
+  const [tasaBCV, setTasaBCV] = useState(0); // Tasa BCV oficial
+  const [tasaParalelo, setTasaParalelo] = useState(0); // Tasa paralelo
+  const [tasaEuro, setTasaEuro] = useState(0); // Tasa del Euro en Bs
 
   useEffect(() => {
-    async function obtenerPromedio() {
-      const url = "https://ve.dolarapi.com/v1/dolares/paralelo";
-      const urlbcv = "https://ve.dolarapi.com/v1/dolares/oficial";
-      const response = await fetch(url);
-      const data = await response.json();
-      const responsebcv = await fetch(urlbcv);
-      const databcv = await responsebcv.json();
+    async function obtenerDatos() {
+      try {
+        // Realizar todas las peticiones en paralelo
+        const [dataParalelo, dataBcv, dataEuro] = await Promise.all([
+          fetch("https://ve.dolarapi.com/v1/dolares/paralelo").then((res) => res.json()),
+          fetch("https://ve.dolarapi.com/v1/dolares/oficial").then((res) => res.json()),
+          fetch("https://api.exchangerate-api.com/v4/latest/USD").then((res) => res.json()),
+        ]);
 
-      setTasaParalelo(data.promedio);
-      setTasaBCV(databcv.promedio);
-      // Calcular promedio
+        // Calcular tasa del Euro en Bs: (Tasa BCV en Bs) / (EUR/USD)
+        const tasaEuroEnBs = dataBcv.promedio / dataEuro.rates.EUR;
+
+        setTasaParalelo(dataParalelo.promedio);
+        setTasaBCV(dataBcv.promedio);
+        setTasaEuro(tasaEuroEnBs);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
     }
-    obtenerPromedio();
+    obtenerDatos();
   }, []);
 
-  const tasaPromedio = (tasaBCV + tasaParalelo) / 2;
+
   // Función para calcular resultados
   const calcular = (valor, tipoEntrada) => {
     let resultado = {};
@@ -31,13 +39,18 @@ const CalculadoraCambio = ({tipo}) => {
     if (tipoEntrada === "USD") {
       const valorNum = parseFloat(valor);
       resultado.BCV = valorNum * tasaBCV;
+      resultado.Euro = valorNum * tasaEuro;
       resultado.Paralelo = valorNum * tasaParalelo;
-      resultado.Promedio = valorNum * tasaPromedio;
+    } else if (tipoEntrada === "EUR") {
+      const valorNum = parseFloat(valor);
+      resultado.BCV = valorNum / tasaBCV;
+      resultado.Euro = valorNum / tasaEuro;
+      resultado.Paralelo = valorNum / tasaParalelo;
     } else {
       const valorNum = parseFloat(valor);
       resultado.BCV = valorNum / tasaBCV;
+      resultado.Euro = valorNum / tasaEuro;
       resultado.Paralelo = valorNum / tasaParalelo;
-      resultado.Promedio = valorNum / tasaPromedio;
     }
 
     return resultado;
@@ -47,7 +60,7 @@ const CalculadoraCambio = ({tipo}) => {
   return (
     <div className="w-full p-4 border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <h2 className="text-2xl md:text-3xl mt-6 text-center">
-        Calculadora de Tipo de Cambio {tipo}
+        Calculadora {tipo}
       </h2>
 
       <div className="mt-2 space-y-3 flex justify-center items-center">
@@ -62,7 +75,7 @@ const CalculadoraCambio = ({tipo}) => {
           />
         </label>
         <label className="inline-block text-sm font-medium">
-          Moneda:
+
           <select
             value={moneda}
             onChange={(e) => setMoneda(e.target.value)}
@@ -80,7 +93,7 @@ const CalculadoraCambio = ({tipo}) => {
             <div class="p-4 md:p-5">
               <div class="gap-2">
                 <p class="text-xs uppercase">
-                <span className="font-bold text-gray-900">Resultado a BCV</span>
+                  <span className="font-bold text-gray-900">Resultado a BCV</span>
                 </p>
               </div>
 
@@ -92,28 +105,27 @@ const CalculadoraCambio = ({tipo}) => {
             </div>
           </div>
 
-          {/* <div class="flex flex-col bg-yellow-200 border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+          <div class="flex justify-center items-center flex-col bg-yellow-200 border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
             <div class="p-4 md:p-5">
               <div class="flex items-center gap-x-2">
                 <p class="text-xs uppercase">
-                <span className="font-bold">Dolar Promedio</span>
+                  <span className="font-bold">Resultado a Euro €</span>
                 </p>
               </div>
 
               <div class="mt-1 flex items-center gap-x-2">
                 <h3 class="text-xl sm:text-2xl font-medium">
-                  {resultados.Promedio?.toFixed(2).replace(".", ",")}{" "}
-                  {moneda === "USD" ? "Bs" : "USD"}
+                  {resultados.Euro?.toFixed(2).replace(".", ",")}{" "}
+                  {moneda === "USD" ? "Bs" : "EUR"}
                 </h3>
               </div>
             </div>
-          </div> */}
-
-          {/* <div class="flex flex-col bg-red-600 border border-gray-200 shadow-2xs rounded-xl">
+          </div>
+          <div class="flex justify-center items-center flex-col bg-red-600 border border-gray-200 shadow-2xs rounded-xl">
             <div class="p-4 md:p-5">
               <div class="flex items-center gap-x-2">
                 <p class="text-xs uppercase text-slate-100">
-                  <span className="font-bold">Dolar Paralelo</span>
+                  <span className="font-bold">Resultado a USDT Bybit ₮</span>
                 </p>
               </div>
 
@@ -124,7 +136,7 @@ const CalculadoraCambio = ({tipo}) => {
                 </h3>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

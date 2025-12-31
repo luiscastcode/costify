@@ -11,9 +11,9 @@ import CalculadoraCambio from "../components/dolar/CalculadoraCambio";
 import Paralelo from "../components/dolar/Paralelo";
 
 interface Props {
-    tipo: string,
+  tipo: string;
 }
-const {tipo} = Astro.props
+const { tipo } = Astro.props;
 ---
 
 <Layout
@@ -39,48 +39,49 @@ const {tipo} = Astro.props
     </div>
     <!-- End Gradients -->
 
-     
-      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-8">
-        <div class="flex justify-center items-center">
-            <img
-              class="rounded-md my-3"
-              src="/img/banner_promo.webp"
-              alt="tarjeta internacional"
-            />
-          </div>
-        <div class="max-w-2xl text-center mx-auto">
-          <!-- Title -->
-          <div class="mt-2 max-w-2xl">
-            <h1
-              class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl"
-            >
-              Calcula el Tipo de Cambio del Dólar
-            </h1>
-          </div>
-          <!-- End Title -->
-
-          <div class="mt-5 max-w-3xl">
-            <p class="text-lg text-gray-600">
-              Calcula el tipo de cambio del dia, actualizado diariamente, con
-              solo ingresar el monto obtendras las tasa oficial BCV.
-            </p>
-          </div>
-        </div>
-        <section class="p-4">
-          <div class="rounded-md grid grid-cols-1">
-            <!-- <div class="py-8 px-4 flex flex-col">
-              <Paralelo client:visible />
-            </div> -->
-
-            <div class="flex flex-col">
-              <CalculadoraCambio tipo="BCV"  client:load />
-            </div>
-          </div>
-        </section>
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-8">
+      <div class="flex justify-center items-center">
+        <img
+          class="rounded-md my-3"
+          src="/img/banner_promo.webp"
+          alt="tarjeta internacional"
+        />
       </div>
+      <div class="max-w-2xl text-center mx-auto">
+        <!-- Title -->
+        <div class="mt-2 max-w-2xl">
+          <h1
+            class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl"
+          >
+            Calcula el Monto en Bs o Divisas
+          </h1>
+        </div>
+        <!-- End Title -->
+
+        <div class="mt-5 max-w-3xl">
+          <p class="text-lg text-gray-600">
+            Calcula el monto en Bs o Divisas, actualizado diariamente, con solo
+            ingresar el monto obtendras el monto convertido en Bs o Divisas.
+          </p>
+        </div>
+      </div>
+      <section class="p-4">
+        <div class="rounded-md grid grid-cols-2">
+          <Paralelo client:visible />
+
+          <CalculadoraCambio tipo="BCV" client:load />
+        </div>
+      </section>
     </div>
- 
+  </div>
+
   <Section>
-  <Cta titulocta="Comunicate Para Publicidad" descripcta="" urlbotoncta="/contacto/" targetcta="" nomboton="Contacto"/>
-</Section>
+    <Cta
+      titulocta="Comunicate Para Publicidad"
+      descripcta=""
+      urlbotoncta="/contacto/"
+      targetcta=""
+      nomboton="Contacto"
+    />
+  </Section>
 </Layout>

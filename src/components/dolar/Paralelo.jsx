@@ -1,88 +1,123 @@
 import React, { useState, useEffect } from "react";
 
+// Utilidad para formatear números en español (con coma decimal)
+const formatearNumero = (numero) => {
+  return numero.toLocaleString("es-VE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+};
+
+// Utilidad para formatear fecha en zona horaria de Venezuela
+const formatearFechaVenezuela = (fechaISO) => {
+  const fecha = new Date(fechaISO);
+  return new Intl.DateTimeFormat("es-VE", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "America/Caracas",
+  }).format(fecha);
+};
+
 const Paralelo = () => {
-  const [paralelo, setParalelo] = useState([
-    { promedio: "", fechaActualizacion: "" },
-  ]);
+  const [paralelo, setParalelo] = useState({
+    promedio: "",
+    fechaActualizacion: "",
+  });
 
-  const [bcv, setBcv] = useState([{ tasabcv: "", fechaActualizacionbcv: "" }]);
+  const [bcv, setBcv] = useState({
+    tasabcv: "",
+    fechaActualizacionbcv: "",
+  });
 
-  const [dolarprom, setDolarProm] = useState(0);
+  const [euro, setEuro] = useState({
+    tasaeuro: "",
+    fechaActualizacioneuro: "",
+  });
+
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function obtenerPromedio() {
-      const url = "https://ve.dolarapi.com/v1/dolares/paralelo";
-      const urlbcv = "https://ve.dolarapi.com/v1/dolares/oficial";
-      const response = await fetch(url);
-      const data = await response.json();
-      const responsebcv = await fetch(urlbcv);
-      const databcv = await responsebcv.json();
+    const obtenerDatos = async () => {
+      try {
+        setCargando(true);
+        setError(null);
 
-      const fechaISO = data.fechaActualizacion;
+        // Realizar todas las peticiones en paralelo para mejor rendimiento
+        const [dataParalelo, dataBcv, dataEuro] = await Promise.all([
+          fetch("https://ve.dolarapi.com/v1/dolares/paralelo").then((res) =>
+            res.json()
+          ),
+          fetch("https://ve.dolarapi.com/v1/dolares/oficial").then((res) =>
+            res.json()
+          ),
+          fetch("https://api.exchangerate-api.com/v4/latest/USD").then((res) =>
+            res.json()
+          ),
+        ]);
 
-      // Convertir la fecha ISO a un objeto Date
-      const fecha = new Date(fechaISO);
+        // Calcular tasa del Euro en Bs: (Tasa BCV en Bs) * (EUR/USD)
+        const tasaEuroEnBs = dataBcv.promedio / dataEuro.rates.EUR;
 
-      // Crear formato en español
-      const opciones = { 
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      };
+        // Formatear fecha en zona horaria de Venezuela
+        const fechaFormateada = formatearFechaVenezuela(
+          dataParalelo.fechaActualizacion
+        );
 
-      // Usar Intl.DateTimeFormat para formatear la fecha
-      const fechaFormateada = new Intl.DateTimeFormat("es-VE", opciones).format(
-        fecha
-      );
-      function promedioFormateado(promedioFormato) {
-        // Convertir el número a un formato con 2 decimales y cambiar el punto por coma
-        return promedioFormato.toFixed(2).replace(".", ",");
-      }
-      let promedioFormato = data.promedio;
-
-      function promedioFormateadoBcv(promedioFomatoBcv) {
-        // Convertir el número a un formato con 2 decimales y cambiar el punto por coma
-        return promedioFomatoBcv.toFixed(2).replace(".", ",");
-      }
-      let promedioFomatoBcv = databcv.promedio;
-
-      setParalelo([
-        {
-          promedio: promedioFormateado(promedioFormato),
+        // Actualizar estados con datos formateados
+        setParalelo({
+          promedio: formatearNumero(dataParalelo.promedio),
           fechaActualizacion: fechaFormateada,
-        },
-      ]);
+        });
 
-      setBcv([
-        {
-          tasabcv: promedioFormateadoBcv(promedioFomatoBcv),
+        setBcv({
+          tasabcv: formatearNumero(dataBcv.promedio),
           fechaActualizacionbcv: fechaFormateada,
-        },
-      ]);
- 
-      function calcularPromedio(numeros) {
-        // Sumar todos los números en el array y dividir entre la cantidad de elementos
-        const suma = numeros.reduce((a, b) => a + b, 0);
-        const promedio = suma / 2;
-        return promedioFormateado(promedio);
+        });
+
+        setEuro({
+          tasaeuro: formatearNumero(tasaEuroEnBs),
+          fechaActualizacioneuro: fechaFormateada,
+        });
+      } catch (err) {
+        console.error("Error al obtener datos:", err);
+        setError("Error al cargar los datos. Por favor, intenta de nuevo.");
+      } finally {
+        setCargando(false);
       }
-      // Ejemplo de uso
-      let numeros = [
-          parseFloat(promedioFomatoBcv),
-         parseFloat(promedioFormato),
-      ]; // Lista de números
-      setDolarProm(calcularPromedio(numeros));
-    }
-    obtenerPromedio();
+    };
+
+    obtenerDatos();
   }, []);
 
+  if (cargando) {
+    return (
+      <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex items-center justify-center h-40">
+          <p className="text-gray-600 dark:text-gray-400">Cargando datos...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex items-center justify-center h-40">
+          <p className="text-red-600 dark:text-red-400">{error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full max-w-md p-4 border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
       <div className="flex items-center justify-between mb-4">
-        <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-          En Cuanto Está el Dolar Hoy En Venezuela
+        <h5 className="text-xl font-bold leading-none text-gray-900">
+          ¿En Cuánto Está el Dólar Hoy en Venezuela?
         </h5>
       </div>
       <div className="flow-root">
@@ -90,81 +125,71 @@ const Paralelo = () => {
           role="list"
           className="divide-y divide-gray-200 dark:divide-gray-700"
         >
-        {bcv.map((prombcv, index) => (
-            <li
-              key={index}
-              className="py-3 sm:py-4 bg-green-400 p-4 rounded-md cursor-pointer"
-            >
-              <div className="flex items-center ">
-                <div className="shrink-0">
-                  <img
-                    className="w-8 h-8 rounded-full"
-                    src="/img/bcv.webp"
-                    alt="Bcv image"
-                  />
-                </div>
-                <div className="flex-1 min-w-0 ms-4">
-                  <p className="text-base font-bold text-gray-900 truncate">
-                    BCV
-                  </p>
-                  <p className="text-sm">
-                    {prombcv.fechaActualizacionbcv}
-                  </p>
-                </div>
-                <div className="inline-flex items-center text-base font-semibold text-gray-900 ">
-                  Bs {prombcv.tasabcv}
-                </div>
+          {/* BCV - Dólar Oficial */}
+          <li className="py-3 sm:py-4 bg-green-400 p-4 rounded-md cursor-pointer">
+            <div className="flex items-center">
+              <div className="shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="/img/bcv.webp"
+                  alt="BCV"
+                />
               </div>
-            </li>
-          ))}
-          {/* <li className="py-3 sm:py-4 bg-yellow-200 p-4 rounded-md cursor-pointer">
+              <div className="flex-1 min-w-0 ms-4">
+                <p className="text-base font-bold text-gray-900 truncate">
+                  BCV $
+                </p>
+                <p className="text-sm">{bcv.fechaActualizacionbcv}</p>
+              </div>
+              <div className="inline-flex items-center text-base font-semibold text-gray-900">
+                Bs {bcv.tasabcv}
+              </div>
+            </div>
+          </li>
+
+          {/* Euro en Bolívares */}
+          <li className="py-3 sm:py-4 bg-yellow-200 p-4 rounded-md cursor-pointer">
             <div className="flex items-center">
               <div className="shrink-0">
                 <img
                   className="w-8 h-8 rounded-full"
                   src="/img/dolar.webp"
-                  alt="Neil image"
+                  alt="Euro"
                 />
               </div>
               <div className="flex-1 min-w-0 ms-4">
-                <p className="text-sm font-bold text-gray-900 truncate ">
-                  Promedio
+                <p className="text-sm font-bold text-gray-900 truncate">
+                  Euro €
                 </p>
+                <p className="text-sm">{euro.fechaActualizacioneuro}</p>
               </div>
-              <div className="inline-flex items-center text-base font-semibold text-gray-900  ">
-                Bs {dolarprom}
+              <div className="inline-flex items-center text-base font-semibold text-gray-900">
+                Bs {euro.tasaeuro}
               </div>
             </div>
           </li>
 
-          {paralelo.map((prom, index) => (
-            <li
-              key={index}
-              className="py-3 sm:py-4 bg-red-400 p-4 rounded-md cursor-pointer"
-            >
-              <div className="flex items-center">
-                <div className="shrink-0">
-                  <img
-                    className="w-8 h-8 rounded-full"
-                    src="/img/dolar.webp"
-                    alt="Neil image"
-                  />
-                </div>
-                <div className="flex-1 min-w-0 ms-4">
-                  <p className="text-sm font-bold text-gray-900 truncate">
-                    Paralelo
-                  </p>
-                  <p className="text-sm">
-                    {prom.fechaActualizacion}
-                  </p>
-                </div>
-                <div className="inline-flex items-center text-base font-semibold text-gray-900">
-                  Bs {prom.promedio}
-                </div>
+          {/* Paralelo - USDT Bybit */}
+          <li className="py-3 sm:py-4 bg-red-700 p-4 rounded-md cursor-pointer">
+            <div className="flex items-center">
+              <div className="shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="/img/dolar.webp"
+                  alt="USDT"
+                />
               </div>
-            </li>
-          ))} */}
-          
+              <div className="flex-1 min-w-0 ms-4">
+                <p className="text-sm font-bold text-gray-900 truncate">
+                  USDT Bybit ₮
+                </p>
+                <p className="text-sm">{paralelo.fechaActualizacion}</p>
+              </div>
+              <div className="inline-flex items-center text-base font-semibold text-gray-900">
+                Bs {paralelo.promedio}
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
