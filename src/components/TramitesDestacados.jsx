@@ -17,7 +17,7 @@ const TramitesDestacados = () => {
   return (
     <section className="rounded-md p-4 my-6">
       <h3 className="bg-slate-100 p-3 rounded-md">
-        Los Trámites Más Usados Por Tu Bodega
+        Los Trámites Que Tu Bodega Necesita Resolver
       </h3>
       <div
         id="masbuscados"

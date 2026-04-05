@@ -3,7 +3,7 @@ import type { Datos } from "../types";
 const DataTramites:Datos[] = [
 
  
-  {id:1,nombre:'Pagar trámite PUB en linea Saren',url:'pagar-en-linea-pub-saren',img:'saren-logo.png',target:''},
+  {id:1,nombre:'Cómo Pagar la planilla PUB del Saren',url:'pagar-en-linea-pub-saren',img:'saren-logo.png',target:''},
   {id:2,nombre:'Guia Para Pagar pasaporte en linea',url:'#',img:'logo.png',target:''}, 
   {id:3,nombre:'Guia Para Registrarse En Línea En INTT',url:'registrarse-en-linea-en-intt',img:'logo_intt.webp',target:''}, 
   {id:4,nombre:'Guia Actualizar RIF En Linea',url:'actualizar-rif-en-linea',img:'logoseniat.jpg',target:''},
