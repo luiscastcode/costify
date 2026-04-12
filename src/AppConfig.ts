@@ -3,7 +3,7 @@ import socialImg from '../public/img/social.webp'
 
 
 export const SITE = {
-  metatitle: "Aprende a Pagar En Linea Facturas y Trámites en Venezuela 2025",
+  metatitle: "Aprende a Tu Bodega Al Día Facturas y Trámites en Venezuela 2025",
   tagline: "Guias Para Pagar Trámites y Servicios",
   metadescrip: "Aprende a gestionar tus trámites, pagar facturas desde tu teléfono o pc, pagar servicios en linea de Cantv, factura en línea corpoelec, rif en línea y más.",
   description_short: "Aprende a gestionar tus trámites, pagar facturas desde tu teléfono o pc.",

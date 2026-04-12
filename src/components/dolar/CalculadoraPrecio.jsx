@@ -103,7 +103,7 @@ import React, { useState, useEffect } from "react";
 
                         {/* Header Section */}
                         <div className="text-center">
-                            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Calculadora de Precios</h1>
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Calculadora de Precios</h2>
                             <p className="text-gray-500 mt-1">De USD a Bolívares con rentabilidad</p>
                         </div>
 
