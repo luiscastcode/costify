@@ -3,21 +3,42 @@ import BotonPrincipal from "./BotonPrincipal.astro";
 import CalculadoraPrecio from "./dolar/CalculadoraPrecio";
  
 
-const { tituloencabezado, nombtn, urlbtn, targetbtn, descriphero, img } =
+const { tituloencabezado, nombtn, urlbtn, targetbtn, nombtn2, urlbtn2, targetbtn2, descriphero, img } =
   Astro.props;
 ---
 
 <section class="px-1 md:px-4 w-full md:w-full">
+
   <div
-    class="bg-gradient-to-r from-cyan-700 to-blue-300 md:max-h-screen rounded-md grid grid-cols-1 md:grid-cols-2 justify-center items-center"
+    class="bg-gradient-to-r from-blue-200 to-slate-300 md:max-h-screen rounded-md grid grid-cols-1 md:grid-cols-2 justify-center items-center"
   >
-    <div class="py-8 px-4 md:px-12 flex flex-col">
-      <h1 class="mb-4 tracking-tight text-slate-100">
+    <section class="relative overflow-hidden py-12 md:py-20">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
         {tituloencabezado}
+        <span class="text-blue-600 dark:text-blue-400">Bodegas en Venezuela</span>
       </h1>
-      <p class="mb-10 text-slate-200">{descriphero}</p>
-      <BotonPrincipal nombtn={nombtn} urlbtn={urlbtn} targetbtn={targetbtn} />
+      <p class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        {descriphero}
+        <span class="font-semibold text-blue-600 dark:text-blue-400">Más fácil y rápido que una calculadora mágica.</span>
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={urlbtn} target={targetbtn} class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-900 bg-amber-300 hover:bg-amber-700 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
+          {nombtn}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+        <a href={urlbtn2} target={targetbtn2} class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-all duration-200">
+          {nombtn2}
+        </a>
+      </div>
+      <!-- Badge de confianza -->
+      <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+        <span class="inline-flex items-center">✓ Tasa BCV actualizada</span>
+        <span class="inline-flex items-center">✓ Fórmula de margen de ganancia</span>
+        <span class="inline-flex items-center">✓ Ideal para bodegas y abastos</span>
+      </div>
     </div>
+  </section>
 
     <CalculadoraPrecio client:visible />
   </div>

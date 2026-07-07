@@ -1,4 +1,5 @@
 ---
+import type { StaticPaths } from "astro";
 import Paginacion from "../../components/contenido/Paginacion.astro";
 import Cta from "../../components/Cta.astro";
 import CardBlog from "../../components/ui/cards/CardBlog.astro";
@@ -6,7 +7,7 @@ import Layout from "../../layouts/Layout.astro";
 import { sortPostsByDate } from "../../utils/fecha-fomato";
 import Section from "../../components/Section.astro";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: any }): Promise<StaticPaths> {
   const allPosts = await Astro.glob("./*.md");
   allPosts.sort(sortPostsByDate);
   return paginate(allPosts, {

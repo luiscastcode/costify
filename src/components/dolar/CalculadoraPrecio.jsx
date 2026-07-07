@@ -98,15 +98,11 @@ import React, { useState, useEffect } from "react";
 
             // --- Rendered UI (JSX) ---
             return (
-                <div className="min-h-screen flex items-center justify-center p-4">
+                <div className=" flex items-center justify-center p-4">
                     <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 md:p-8">
 
                         {/* Header Section */}
-                        <div className="text-center">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Calculadora de Precios</h2>
-                            <p className="text-gray-500 mt-1">De USD a Bolívares con rentabilidad</p>
-                        </div>
-
+                        
                         {/* Exchange Rate Display */}
                         <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
                             <p className="text-sm font-medium text-gray-500">Tasa de cambio del día BCV</p>

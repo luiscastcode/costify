@@ -1,0 +1,430 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import Lista from "../components/Lista.astro";
+import Cta from "../components/Cta.astro";
+// Aquí importas tu componente de la calculadora
+import CalculadoraPrecio from "../components/dolar/CalculadoraPrecio";
+---
+
+<Layout
+  metatitle="Simulador de Precios para Bodegas en Venezuela | Costify"
+  metadescrip="Calcula el precio de venta perfecto para tu bodega con margen de ganancia. Simulador fácil y rápido con tasa BCV actualizada."
+  slug="simulador-precios"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Simulador de Precios para Bodegas en Venezuela | Costify",
+    "description": "Calcula el precio de venta perfecto para tu bodega con margen de ganancia. Simulador fácil y rápido con tasa BCV actualizada.",
+    "url": "https://costify.vercel.app/simulador-precios"
+  }}
+>
+  <Section>
+    <!-- ============================================ -->
+    <!-- HERO: SIMULADOR DE PRECIOS                    -->
+    <!-- ============================================ -->
+    <section class="relative overflow-hidden py-12 md:py-16 lg:py-20">
+      <div
+        class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <!-- Badge -->
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"
+            ></span>
+          </span>
+          Herramienta gratuita
+        </div>
+
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+        >
+          Simulador de Precios
+          <span class="text-blue-600 dark:text-blue-400">para Bodegas</span>
+        </h1>
+
+        <p
+          class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+        >
+          Calcula el precio de venta perfecto con margen de ganancia.
+          <span class="font-semibold text-blue-600 dark:text-blue-400"
+            >Más fácil que una calculadora mágica.</span
+          >
+        </p>
+
+        <div
+          class="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-500 dark:text-gray-400"
+        >
+          <span class="inline-flex items-center gap-1.5">
+            <svg
+              class="w-4 h-4 text-green-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            Tasa BCV actualizada
+          </span>
+          <span class="inline-flex items-center gap-1.5">
+            <svg
+              class="w-4 h-4 text-green-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            Margen de ganancia
+          </span>
+          <span class="inline-flex items-center gap-1.5">
+            <svg
+              class="w-4 h-4 text-green-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            Resultados al instante
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CALCULADORA                                  -->
+    <!-- ============================================ -->
+    <section id="calculadora" class="py-8 md:py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Tarjeta contenedora de la calculadora -->
+        <div
+          class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden"
+        >
+          <!-- Header de la tarjeta -->
+          <div
+            class="px-6 py-4 md:px-8 md:py-5 border-b border-gray-100 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600 text-white"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path></svg
+                >
+              </div>
+              <div>
+                <h2
+                  class="text-lg md:text-xl font-bold text-gray-900 dark:text-white"
+                >
+                  Calculadora de Precios
+                </h2>
+                <p class="text-sm text-gray-600 dark:text-gray-300">
+                  De USD a Bolívares con rentabilidad
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuerpo de la tarjeta: Aquí va tu componente calculadora -->
+           
+            <CalculadoraPrecio client:visible />
+           
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- BENEFICIOS DEL SIMULADOR                     -->
+    <!-- ============================================ -->
+    <section class="py-12 md:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
+          >
+            ¿Por qué usar el <span class="text-blue-600 dark:text-blue-400"
+              >simulador de precios</span
+            >?
+          </h2>
+          <p class="mt-2 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Diseñado especialmente para bodegueros y pequeños comerciantes en
+            Venezuela.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Beneficio 1 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow duration-200"
+          >
+            <div
+              class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg
+              >
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Resultados al instante
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Obtén el precio de venta en segundos. Solo ingresa el costo en
+              dólares y elige tu margen de ganancia.
+            </p>
+          </div>
+
+          <!-- Beneficio 2 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow duration-200"
+          >
+            <div
+              class="flex items-center justify-center w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-4"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 7h6m0 10v-3m-6 3v-3m-6 3h18M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"
+                ></path></svg
+              >
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Tasa BCV actualizada
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              La calculadora usa la tasa de cambio oficial del día para que tus
+              precios estén siempre al día.
+            </p>
+          </div>
+
+          <!-- Beneficio 3 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow duration-200"
+          >
+            <div
+              class="flex items-center justify-center w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-4"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path></svg
+              >
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Fórmula confiable
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Usa el método del margen de ganancia, el estándar en contabilidad
+              para fijar precios rentables.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CÓMO USAR EL SIMULADOR (PASOS)               -->
+    <!-- ============================================ -->
+    <section class="py-12 md:py-16 bg-gray-50 dark:bg-gray-800/50 rounded-2xl">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
+          >
+            Cómo usar el <span class="text-blue-600 dark:text-blue-400"
+              >simulador</span
+            >
+          </h2>
+          <p class="mt-2 text-gray-500 dark:text-gray-400">
+            Tres pasos sencillos para calcular el precio perfecto
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 relative">
+          <!-- Línea conectora (solo visible en desktop) -->
+          <div
+            class="hidden md:block absolute top-12 left-1/3 right-1/3 h-0.5 bg-blue-200 dark:bg-blue-800"
+          >
+          </div>
+
+          <!-- Paso 1 -->
+          <div class="relative text-center">
+            <div
+              class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white text-2xl font-bold mx-auto mb-4 shadow-lg shadow-blue-200 dark:shadow-blue-900/30"
+            >
+              1
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Ingresa el costo
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Escribe el costo del producto en dólares ($) en el campo
+              correspondiente.
+            </p>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="relative text-center">
+            <div
+              class="flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white text-2xl font-bold mx-auto mb-4 shadow-lg shadow-blue-200 dark:shadow-blue-900/30"
+            >
+              2
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Elige tu margen
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Selecciona el porcentaje de ganancia que deseas obtener (ej. 30%,
+              40%, 50%).
+            </p>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="relative text-center">
+            <div
+              class="flex items-center justify-center w-14 h-14 rounded-full bg-green-600 text-white text-2xl font-bold mx-auto mb-4 shadow-lg shadow-green-200 dark:shadow-green-900/30"
+            >
+              3
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Obtén tu precio
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              El simulador te mostrará el precio de venta en bolívares con tu
+              margen incluido.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PREGUNTAS FRECUENTES (FAQ)                    -->
+    <!-- ============================================ -->
+    <section class="py-12 md:py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white"
+          >
+            Preguntas <span class="text-blue-600 dark:text-blue-400"
+              >frecuentes</span
+            >
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow duration-200"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              ¿Qué es el margen de ganancia?
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              El margen de ganancia es el porcentaje del precio de venta final
+              que representa tu ganancia. Por ejemplo, si vendes un producto a
+              $100 y tu margen es del 30%, tu ganancia es de $30.
+            </p>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow duration-200"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              ¿La tasa BCV se actualiza automáticamente?
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Sí, el simulador usa la tasa de cambio oficial del Banco Central
+              de Venezuela (BCV) del día, para que tus precios estén siempre
+              actualizados.
+            </p>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow duration-200"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              ¿Es gratis usar el simulador?
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Sí, el simulador de precios es completamente gratuito. Puedes
+              usarlo todas las veces que necesites para calcular tus precios.
+            </p>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow duration-200"
+          >
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              ¿Puedo usar este simulador para cualquier tipo de negocio?
+            </h3>
+            <p class="mt-2 text-gray-600 dark:text-gray-300 text-sm">
+              Sí, aunque está diseñado pensando en bodegas y abastos
+              venezolanos, cualquier comerciante puede usarlo para calcular
+              precios con margen de ganancia.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CTA FINAL: ASESORÍA                          -->
+    <!-- ============================================ -->
+    <Cta
+      titulocta="¿Necesitas ayuda para gestionar los precios de tu bodega?"
+      descripcta="Contamos con expertos tributarios y contadores que pueden asesorarte en la fijación de precios y la gestión financiera de tu negocio."
+      urlbotoncta="/contacto/"
+      nomboton="Contacta un Asesor"
+      targetcta=""
+    />
+  </Section>
+</Layout>

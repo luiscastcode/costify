@@ -2,51 +2,56 @@
 import Section from "./Section.astro";
 import MasBuscados from "./MasBuscados";
 import ServiciosDestacados from "./ServiciosDestacados";
-import Lista from "./Lista.astro";
-import ServiciosEnLinea from "./ServiciosEnLinea";
-import Cta from "./Cta.astro";
-import MetodosPagos from "./TarjetaInter";
+import Lista from "./Lista.astro"; 
+import Cta from "./Cta.astro"; 
 import TramitesDestacados from "./TramitesDestacados";
 import TarjetasDestacadas from "./TarjetasDestacadas";
 ---
 
 <Section>
-  <TramitesDestacados client:visible />
-  <section id="saber-mas" class="my-10 grid grid-cols-1">
-    <h2 class="tracking-tight text-center">¿Para que Sirve Costify Precios?</h2>
-    <!-- Icon Blocks -->
-    <div class="px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <div class="w-full mx-auto">
-        <!-- Grid -->
-        <div class="grid md:grid-cols-2 gap-6 lg:gap-12">
-          <div class="space-y-6 lg:space-y-10">
-            <Lista
-              titulolista="Sirve como simulador de precios con margen de ganancia"
-              listadescrip="Utilizando la formula muy popular en Venzuela: Margen de Ganancia."
-            />
-            <Lista
-              titulolista="Ideal para bodegas y pequeños comerciantes"
-              listadescrip="Si necesitas conocer un margen de ganancia específico para competir en el mercado."
-            />
-          </div>
-          <div class="flex flex-col">
-            <Lista
-              titulolista="Para calcular el precio de un producto para tu bodega."
-              listadescrip="Este método es más utilizado en contabilidad y finanzas para calcular el 'margen de ganancia'. La ganancia se calcula como un porcentaje del precio de venta final."
-            />
-            <Lista
-              titulolista="Todos los dias aumenta la tasa BCV"
-              listadescrip="La calculadora de ayudará a definir rapidamente tus precios diarios dandote una idea de lo que debería costar."
-            />
-          </div>
-          <!-- End Col -->
+  
+ 
+
+  <!-- ============================================ -->
+  <!-- 2. ¿PARA QUÉ SIRVE? (Optimizado)              -->
+  <!-- ============================================ -->
+  <section id="para-que-sirve" class="py-12 bg-gray-50 dark:bg-gray-800/50 rounded-2xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white">
+        ¿Para qué sirve <span class="text-blue-600 dark:text-blue-400">Costify Precios</span>?
+      </h2>
+      <p class="mt-2 text-center text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+        La herramienta que todo bodeguero necesita para fijar precios competitivos y rentables.
+      </p>
+      
+      <div class="mt-10 grid md:grid-cols-2 gap-6 lg:gap-10">
+        <div class="space-y-6">
+          <Lista
+            titulolista="Simulador de precios con margen de ganancia"
+            listadescrip="Utiliza la fórmula del margen de ganancia, la más popular en Venezuela para calcular precios de venta."
+          />
+          <Lista
+            titulolista="Ideal para bodegas y pequeños comerciantes"
+            listadescrip="Define un margen de ganancia específico para competir en el mercado sin perder rentabilidad."
+          />
         </div>
-        <!-- End Grid -->
+        <div class="space-y-6">
+          <Lista
+            titulolista="Calcula el precio final de tus productos"
+            listadescrip="La ganancia se calcula como un porcentaje del precio de venta final, el método estándar en contabilidad."
+          />
+          <Lista
+            titulolista="Tasa BCV actualizada diariamente"
+            listadescrip="La calculadora te ayuda a definir tus precios al instante, adaptándote al cambio diario del dólar."
+          />
+        </div>
       </div>
     </div>
-    <!-- End Icon Blocks -->
   </section>
 
+  <!-- ============================================ -->
+  <!-- 3. CTA: ASESORÍA TRIBUTARIA                  -->
+  <!-- ============================================ -->
   <Cta
     titulocta="¿Necesitas ayuda para pagar una factura o realizar un trámite?"
     descripcta="Contáctanos y te pondremos en contacto con un experto tributario."
@@ -54,141 +59,194 @@ import TarjetasDestacadas from "./TarjetasDestacadas";
     nomboton="Consulta a un Asesor"
     targetcta=""
   />
-  
-  <section class="my-5 grid grid-cols-1">
-    <h2 class="tracking-tight text-center">¿Cómo Funciona Costify Precios?</h2>
 
-    <p>
-      La fórmula general para calcular el precio de venta con un margen de
-      ganancia es una herramienta clave en la fijación de precios que asegura
-      que una parte de cada venta sea una ganancia neta. A diferencia del
-      cálculo simple donde se le agrega un porcentaje al costo, esta fórmula te
-      ayuda a determinar el precio de venta final para que tu ganancia
-      represente un porcentaje específico de ese mismo precio final.
-    </p>
-    <h3>Pero Para Que Sirve</h3>
-    <p>
-      Sirve para determinar el precio de venta de un producto o servicio de
-      manera que el margen de ganancia deseado sea un porcentaje del precio de
-      venta final, no del costo. Este enfoque es crucial para:
-    </p>
-    <div class="grid md:grid-cols-2 gap-6 lg:gap-12 p-8">
-      <div class="space-y-6 lg:space-y-10">
-        <Lista
-          titulolista="Análisis de Rentabilidad:"
-          listadescrip="Permite saber con precisión qué porcentaje de cada venta es ganancia real, lo que facilita el análisis de la salud financiera del negocio. Es la métrica más usada en contabilidad."
-        />
-        <Lista
-          titulolista="Y Cómo Funciona?"
-          listadescrip="Precio de venta = Costo del producto / 1 - Margen de ganancia deseado (en decimal)"
-        />
+  <!-- ============================================ -->
+  <!-- 4. ¿CÓMO FUNCIONA? (Reorganizado)            -->
+  <!-- ============================================ -->
+  <section id="como-funciona" class="py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white">
+        ¿Cómo funciona la <span class="text-blue-600 dark:text-blue-400">fórmula de margen de ganancia</span>?
+      </h2>
+      <p class="mt-2 text-center text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+        Aprende a calcular el precio de venta para que tu ganancia sea un porcentaje del precio final.
+      </p>
+
+      <div class="mt-8 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800">
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          <span class="font-semibold">Fórmula:</span> 
+          <span class="font-mono text-blue-600 dark:text-blue-400 text-xl">Precio de venta = Costo del producto / (1 - Margen de ganancia deseado)</span>
+        </p>
+        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+          Ejemplo: Si tu producto cuesta $100 y quieres un margen de ganancia del 30% → $100 / (1 - 0.30) = <span class="font-bold text-blue-600 dark:text-blue-400">$142.86</span>
+        </p>
       </div>
-      <div class="flex flex-col">
-        <Lista
-          titulolista="Comparación y Fijación de Precios:"
-          listadescrip="Ayuda a comparar la rentabilidad entre diferentes productos o servicios y a establecer precios competitivos en el mercado, basándose en la rentabilidad que necesitas."
-        />
-        <Lista
-          titulolista="Lógica detrás de la fórmula:"
-          listadescrip="La fórmula parte de la idea de que el precio de venta es el 100% de tu ingreso. Este 100% se divide en dos partes: el costo y la ganancia."
-        />
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6 lg:gap-10">
+        <div class="space-y-6">
+          <Lista
+            titulolista="Análisis de Rentabilidad"
+            listadescrip="Sabrás con precisión qué porcentaje de cada venta es ganancia real. La métrica más usada en contabilidad."
+          />
+          <Lista
+            titulolista="Comparación y Fijación de Precios"
+            listadescrip="Compara la rentabilidad entre productos y establece precios competitivos basados en tu rentabilidad deseada."
+          />
+        </div>
+        <div class="space-y-6">
+          <Lista
+            titulolista="La lógica detrás de la fórmula"
+            listadescrip="El precio de venta es el 100%. Si tu costo es el 70% de ese precio, divides el costo entre 0.70 para obtener el precio final."
+          />
+          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              <span class="font-semibold">💡 Recuerda:</span> 
+              La tasa BCV cambia a diario. Usa nuestro simulador para actualizar tus precios al instante.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
-    <p>
-      Si ya sabes tu costo (ej. $100) y sabes que ese costo representa el 70%
-      del precio de venta final, entonces divides el costo ($100) por el 70%
-      (0.70) para encontrar el 100% (el precio de venta final).
-    </p>
   </section>
+
+  <!-- ============================================ -->
+  <!-- 5. MÁS BUSCADOS (Componente existente)       -->
+  <!-- ============================================ -->
   <MasBuscados />
 
+  <!-- ============================================ -->
+  <!-- 6. SERVICIOS DESTACADOS (Componente)         -->
+  <!-- ============================================ -->
   <ServiciosDestacados />
 
-  
-
-  <section>
-    <Cta
-      titulocta="¿Cómo Generar la Planilla PUB SAREN?"
-      descripcta="Aprender como pagar y descagar planilla PUB SAREN."
-      urlbotoncta="/tramites/pagar-en-linea-pub-saren/"
-      nomboton="Guía Completa"
-      targetcta=""
-    />
-  </section>
-  <section
-    class="grid grid-cols-1 md:grid-cols-2 justify-center items-center mx-auto p-6"
-  >
-    <div class="flex justify-center items-center">
-      <img
-        class="rounded-md my-3"
-        src="/img/supermarket.jpg"
-        alt="super mercado"
-      />
-    </div>
-    <div class="py-8 px-4 md:px-12 flex flex-col justify-between">
-      <h2 class="text-center">
-        ¿Cómo Ayudaremos a Gestionar Tu Bodega?
+  <!-- ============================================ -->
+  <!-- 7. TRÁMITES DESTACADOS (NUEVA SECCIÓN)      -->
+  <!-- ============================================ -->
+  <section id="tramites" class="py-12 bg-gray-50 dark:bg-gray-800/50 rounded-2xl">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+        Trámites para tu <span class="text-blue-600 dark:text-blue-400">bodega o abasto</span>
       </h2>
-
-      <p>
-        Sin importar su nivel de experiencia tecnológica, te explicamos cómo te
-        ayudaremos:
+      <p class="mt-2 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+        Guías paso a paso para los trámites más importantes que todo bodeguero necesita resolver.
       </p>
-      <Lista
-        titulolista="Pasos Detallados y Claros"
-        listadescrip="Incluimos instrucciones paso a paso para realizar los trámites más comunes, desde registrarte en las plataformas de los entes gubernamentales hasta generar y pagar tus planillas de forma digital."
-      />
-      <Lista
-        titulolista="Enlaces Directos a Portales Oficiales"
-        listadescrip="Nuestra web proporciona enlaces a los portales más importantes, como el SENIAT, las alcaldías locales y otros entes públicos y privados. Esto garantiza que realices tus gestiones de manera segura y confiable, utilizando canales oficiales."
-      />
-      <Lista
-        titulolista="Evitar Gestores Costosos"
-        listadescrip="Contratar un gestor puede parecer una solución rápida, pero muchas veces representa un gasto innecesario. Nuestra guía te capacita para que tú mismo puedas realizar estos trámites, empoderándote y ahorrándote dinero."
-      />
+      <div class="mt-6">
+        <TramitesDestacados client:visible />
+      </div>
     </div>
   </section>
 
-  <section
-    class="my-10 grid grid-cols-1 md:grid-cols-2 justify-center items-center mx-auto"
-  >
-    <div class="py-8 px-4 md:px-12 flex flex-col justify-between">
-      <h2 class="text-center">
-        Conoce Los Métodos de Pago en Línea Más Usados en Venezuela
-      </h2>
-      <p>
-        Además, publicamos alertas sobre estafas comunes, como phishing en
-        páginas clonadas, y recomendaciones para proteger tus datos.
-      </p>
-      <Lista
-        titulolista="Tarjetas Para Pagos Internacionales"
-        listadescrip="Ventajas y desventajas de usar tarnetas internacionales de instituciones como Banesco o Banco de Venezuela."
-      />
-      <Lista
-        titulolista="Monederos Electrónicos:"
-        listadescrip="Plataforma Patria, Binance Pay, Reserve."
-      />
-      <Lista
-        titulolista="Plataformas Internacionales:"
-        listadescrip="PayPal, Zelle, Binance y cómo vincularlas a cuentas locales."
-      />
-      <Lista
-        titulolista="Criptomonedas:"
-        listadescrip="Uso de Bitcoin, USDT o Dash para pagos rápidos y sin intermediarios."
-      />
-    </div>
-    <div class="flex justify-center items-center">
-      <img class="rounded-md my-3" src="/img/tc.png" alt="registro corpoelec" />
+  <!-- ============================================ -->
+  <!-- 8. CTA: PLANILLA PUB SAREN                   -->
+  <!-- ============================================ -->
+  <Cta
+    titulocta="¿Cómo generar la Planilla PUB del SAREN?"
+    descripcta="Aprende a pagar y descargar la planilla PUB SAREN sin gestores ni complicaciones."
+    urlbotoncta="/tramites/pagar-en-linea-pub-saren/"
+    nomboton="Ver Guía Completa"
+    targetcta=""
+  />
+
+  <!-- ============================================ -->
+  <!-- 9. GESTIÓN DE BODEGAS (Optimizado)          -->
+  <!-- ============================================ -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Imagen -->
+        <div class="order-2 md:order-1 flex justify-center">
+          <img
+            class="rounded-xl shadow-lg w-full max-w-md object-cover"
+            src="/img/supermarket.jpg"
+            alt="Gestión de bodegas en Venezuela"
+          />
+        </div>
+        <!-- Contenido -->
+        <div class="order-1 md:order-2 space-y-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+            ¿Cómo ayudamos a <span class="text-blue-600 dark:text-blue-400">gestionar tu bodega</span>?
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            Sin importar tu nivel de experiencia tecnológica, te explicamos paso a paso cómo gestionar tu negocio.
+          </p>
+          <div class="space-y-4">
+            <Lista
+              titulolista="Pasos Detallados y Claros"
+              listadescrip="Instrucciones paso a paso para trámites, desde registros en plataformas gubernamentales hasta pagos digitales."
+            />
+            <Lista
+              titulolista="Enlaces Directos a Portales Oficiales"
+              listadescrip="Acceso seguro a SENIAT, alcaldías y otros entes públicos y privados, sin riesgos de estafas."
+            />
+            <Lista
+              titulolista="Evita Gestores Costosos"
+              listadescrip="Te capacitamos para que realices tus trámites tú mismo, ahorrando dinero y empoderándote."
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- ============================================ -->
+  <!-- 10. MÉTODOS DE PAGO (Optimizado)             -->
+  <!-- ============================================ -->
+  <section class="py-12 bg-gray-50 dark:bg-gray-800/50 rounded-2xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Contenido -->
+        <div class="space-y-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+            Métodos de pago en línea <span class="text-blue-600 dark:text-blue-400">más usados en Venezuela</span>
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            Publicamos alertas sobre estafas comunes, como phishing en páginas clonadas, y recomendaciones para proteger tus datos.
+          </p>
+          <div class="space-y-4">
+            <Lista
+              titulolista="Tarjetas para Pagos Internacionales"
+              listadescrip="Ventajas y desventajas de usar tarjetas internacionales de Banesco, Banco de Venezuela y otras."
+            />
+            <Lista
+              titulolista="Monederos Electrónicos"
+              listadescrip="Plataforma Patria, Binance Pay, Reserve y sus usos para tu negocio."
+            />
+            <Lista
+              titulolista="Plataformas Internacionales"
+              listadescrip="PayPal, Zelle, Binance y cómo vincularlas a cuentas locales."
+            />
+            <Lista
+              titulolista="Criptomonedas"
+              listadescrip="Uso de Bitcoin, USDT o Dash para pagos rápidos y sin intermediarios."
+            />
+          </div>
+        </div>
+        <!-- Imagen -->
+        <div class="flex justify-center">
+          <img
+            class="rounded-xl shadow-lg w-full max-w-md object-cover"
+            src="/img/tc.png"
+            alt="Tarjetas y métodos de pago en Venezuela"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 11. TARJETAS DESTACADAS (Componente)         -->
+  <!-- ============================================ -->
   <TarjetasDestacadas />
 
+  <!-- ============================================ -->
+  <!-- 12. CTA FINAL: ASESORÍA                     -->
+  <!-- ============================================ -->
   <Cta
     titulocta="Asesoría Personalizada con Expertos"
-    descripcta="Si tienes una pequeña empresa o PYME y necesitas asesoría, contamos con expertos turbutarios, contadores y abogados que ayudarán a solventar cualquier situación"
+    descripcta="Si tienes una pequeña empresa o PYME y necesitas asesoría, contamos con expertos tributarios, contadores y abogados que ayudarán a solventar cualquier situación."
     urlbotoncta="/contacto/"
     nomboton="Contacta un Asesor"
     targetcta=""
   />
+
 </Section>
